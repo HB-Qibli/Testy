@@ -5,9 +5,9 @@ class Testy
 {
  static void Main(string[] args)
         {
-                bool run = true;
-                Storagehandler handl = new Storagehandler(); //honestly unnecesary, making it static would have been just fine as multiple instances wont ever be needed
-				Displayer display = new Displayer(); // but ig to show teacher that the student is able to do this and understand what it does ig
+            bool run = true;
+            Storagehandler handl = new Storagehandler(); //honestly unnecesary, making it static would have been just fine as multiple instances wont ever be needed
+			Displayer display = new Displayer(); // but ig to show teacher that the student is able to do this and understand what it does ig
 
 
             Console.WriteLine("hello cock");
@@ -66,4 +66,5 @@ public class Storagehandler
 		
 		
     }
+}
 }
