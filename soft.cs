@@ -1,17 +1,17 @@
 // Testy
-namespace system
+namespace System
 {
 class Testy
 {
  static void Main(string[] args)
         {
-bool run = true;
+                bool run = true;
 
 
-            System.Console.WriteLine("hello cock");
+            Console.WriteLine("hello cock");
             while (run == true)
             {
-
+                
 
 
             }       
@@ -25,5 +25,7 @@ bool run = true;
 3. make it so when launching you have the option whether to run on web or terminal
 
 Decided to make text based very simple first in abt a hour, if i got time and willpower will make a better version after.
+
+update: decided on 1, will have hardcoded notes perhaps, and additional ones you can make that get saved as txt files or smth in its own directory
 */
 }
