@@ -18,15 +18,16 @@ class Testy
 
 
             //do stuff here like welcome to this application and shit, maybe fancy with coloured text too
+                display.WriteLine("Welcome to a application for notes, it is amazingly bad!", typespeed, ConsoleColor.Blue);
 
             do
             {
                 display.WriteLine("Select a option by number: ", typespeed);
-                display.WriteLine("1. Create a note", typespeed);
-                display.WriteLine("2. Read saved notes", typespeed);
-                display.WriteLine("3. delete notes", typespeed);
-                display.WriteLine("4. help", typespeed);
-                display.WriteLine("5. exit ", typespeed);
+                display.WriteLine("1. Create a note", typespeed, ConsoleColor.Green);
+                display.WriteLine("2. Read saved notes", typespeed, ConsoleColor.Cyan);
+                display.WriteLine("3. delete notes", typespeed, ConsoleColor.Red);
+                display.WriteLine("4. help", typespeed, ConsoleColor.Yellow);
+                display.WriteLine("5. exit ", typespeed, ConsoleColor.Red);
                 display.WriteLine("Select option: ", typespeed);
 
                 answer = Console.ReadLine();
@@ -82,15 +83,21 @@ class Testy
 
 public class Displayer
 {
-	public void WriteLine(string message, int speed)
+	public void WriteLine(string message, int speed, ConsoleColor color = ConsoleColor.White)
 	{
+        ConsoleColor originalColor = Console.ForegroundColor;
+
+        Console.ForegroundColor = color;
+
 		for (int i = 0; i < message.Length; i++)
       {
                 Console.Write(message[i]);
                 System.Threading.Thread.Sleep(speed);
       }
+      Console.ForegroundColor = originalColor;
       Console.WriteLine(); //add a new line at the end
 	}
+    	// In future add more stuff for help to render or visualise this shit
 }
 
 
