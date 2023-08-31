@@ -30,7 +30,7 @@ class Testy
                 display.WriteLine("Select option: ", typespeed);
 
                 answer = Console.ReadLine();
-
+            // Fix bug: pressing enter while options are written does trigger the readline and skips switch, then reads options again
                 switch (answer) 
                 {
                     case "1":
@@ -58,15 +58,20 @@ class Testy
 
                     case "4":
                     //insert help stuff, like explain things
+                    display.WriteLine("Basics of programming are in a saved note that comes with the code, otherwise idk, this is too simple to explain", typespeed);
                     break;
 
                     case "5":
                     run = false;
                     break;
+
+                    default:
+                    display.WriteLine("You wrote something wrong, or you pressed enter while options were writing still, be patient", typespeed);
+                    break;
                 }
 
 
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(500);
                 Console.Clear();
             }  while (run == true);
 
