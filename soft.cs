@@ -5,13 +5,12 @@ class Testy
 {
  static void Main(string[] args)
         {
-            bool run = true;
             Storagehandler handl = new Storagehandler(); //honestly unnecesary, making it static would have been just fine as multiple instances wont ever be needed
 			Displayer display = new Displayer(); // but ig to show teacher that the student is able to do this and understand what it does ig
 
 
             Console.WriteLine("hello cock");
-            while (run == true)
+            while (2+2!=5)//i'll just break out of this, only way its fucked is if some stupid ass particle travels for eons just to flip a bit
             {
                 
 
