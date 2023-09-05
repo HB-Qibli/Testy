@@ -10,10 +10,11 @@ class Testy
         {
             string answer; // first few lines here are prep
             bool run = true;
-            int typespeed = 60;
-            Storagehandler handl = new Storagehandler(); //honestly unnecesary, making it static would have been just fine as multiple instances wont ever be needed
-			Displayer display = new Displayer(); // but ig to show teacher that the student is able to do this and understand what it does ig
-
+            int typespeed = 40;
+            //honestly unnecesary, making it static would have been just fine as multiple instances wont ever be needed
+            // but ig to show teacher that the student is able to do this and understand what it does ig
+            Storagehandler handl = new Storagehandler();
+			Displayer display = new Displayer(); 
 
             //do stuff here like welcome to this application and shit, maybe fancy with coloured text too
                 display.WriteLine("Welcome to a application for notes, it is amazingly bad!", typespeed, ConsoleColor.Blue);
@@ -23,9 +24,10 @@ class Testy
                 display.WriteLine("Select a option by number: ", typespeed);
                 display.WriteLine("1. Create a note", typespeed, ConsoleColor.Green);
                 display.WriteLine("2. Read saved notes", typespeed, ConsoleColor.Cyan);
-                display.WriteLine("3. delete notes", typespeed, ConsoleColor.Red);
-                display.WriteLine("4. help", typespeed, ConsoleColor.Yellow);
-                display.WriteLine("5. exit ", typespeed, ConsoleColor.Red);
+                display.WriteLine("3. Delete notes", typespeed, ConsoleColor.Red);
+                display.WriteLine("4. Help", typespeed, ConsoleColor.Yellow);
+                display.WriteLine("5. Exit ", typespeed, ConsoleColor.Red);
+                display.WriteLine("6. Wipe all saved notes", typespeed, ConsoleColor.DarkRed);
                 display.WriteLine("Select option: ", typespeed);
 
                 answer = Console.ReadLine();
@@ -62,6 +64,18 @@ class Testy
 
                     case "5":
                     run = false;
+                    break;
+
+                    case "6":
+                    if (handl.CheckPasswd() == 1)
+                    {
+                        display.WriteLine("Correct password, deleting...");
+                        //del func here
+                    }
+                    else
+                    {
+                        display.WriteLine("Incorrect password.");
+                    }
                     break;
 
                     default:

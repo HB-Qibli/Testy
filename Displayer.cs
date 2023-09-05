@@ -5,7 +5,7 @@ namespace System
     
 public class Displayer
 {
-	public void WriteLine(string message, int speed, ConsoleColor color = ConsoleColor.White)
+	public void WriteLine(string message, int speed = 80, ConsoleColor color = ConsoleColor.White)
 	{
         ConsoleColor originalColor = Console.ForegroundColor;
 
@@ -20,5 +20,6 @@ public class Displayer
       Console.WriteLine(); //add a new line at the end
 	}
     	// In future add more stuff for help to render or visualise this shit
+        // but what, hmmm :thonk:
 }
 }

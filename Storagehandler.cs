@@ -6,6 +6,30 @@ namespace System
 public class Storagehandler 
 {
 
+public Storagehandler(string password = "bananarama") //yeah, defeats the purpouse of encapsulation, but yknow what if someone wants a diff passwd, im too lazy to change dis
+{ 
+unlocked = false;
+passwd = password; //uh huh
+}
+
+private string passwd;
+private bool unlocked;
+
+public int CheckPasswd() //basically encapsulation, the concept of keeping a variable private but checking it still, keeping it safe from being accessed and read by user
+{
+    Console.WriteLine("Input password: ");
+    if (Console.ReadLine() == passwd)
+    {
+        unlocked = true;
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
+}
+
 	public void ViewNotesChapters()
     {
         Console.WriteLine("Listing notes by chapter:");
@@ -78,5 +102,23 @@ public class Storagehandler
         }
 
     }
+
+    public void Bananarama()
+    {
+        if (unlocked == true)
+        {
+        string[] noteFiles = Directory.GetFiles(".", "*.txt");
+
+        foreach (string noteFile in noteFiles)
+        {
+            File.Delete(noteFile);
+        }
+        }
+        else
+        {
+            Console.WriteLine("You dont have the priviladges to do this, or code fucked up, idk.");
+        }
+    }
+
 }
 }
