@@ -107,7 +107,7 @@ public int CheckPasswd() //basically encapsulation, the concept of keeping a var
     {
         if (unlocked == true)
         {
-        string[] noteFiles = Directory.GetFiles(".", "*.txt");
+        string[] noteFiles = Directory.GetFiles(".", "*.txt"); //wipes all text files in working directory, maybe later make it all files ever >:3
 
         foreach (string noteFile in noteFiles)
         {
