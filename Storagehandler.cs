@@ -12,6 +12,7 @@ namespace System
         {
             unlocked = false;
             passwd = password; //uh huh
+            CiphKey = "";
         }
 
         private string passwd;
@@ -53,15 +54,14 @@ namespace System
 
             if (File.Exists(fileName))
             {
-                string encryptedContent = File.ReadAllText(fileName);  //		TODO: add option to encrypt or not to encrypt the message
-                
-                Console.WriteLine($"\nNote Content:\n{content}");
-                /*
-                          // Decrypt and display the note content
-            string encryptedContent = File.ReadAllText(fileName);
-            Displayer.DisplayEncryptedText(encryptedContent, 50, "SuperSecretKey");
+                string content = File.ReadAllText(fileName);  //		TODO: add *option* to encrypt or not to encrypt the message
 
-                */
+                Console.WriteLine($"\nNote Content:\n");
+
+                // Decrypt and display the note content
+                string encryptedContent = File.ReadAllText(fileName);
+                Displayer.DisplayEncryptedText(encryptedContent, 50, CiphKey);
+
             }
             else
             {
@@ -91,12 +91,9 @@ namespace System
 
             string fileName = $"{title}.txt";  // $ indicated that string interpolation is being used, where {} is the indicator of a string being added, not text
 
-            File.WriteAllText(fileName, content);  //		TODO: obscure it so notes app cant read it
-            /*
-                    // Encrypt and save the note content
-        string encryptedContent = Displayer.EncryptString(content, "SuperSecretKey");
-        File.WriteAllText(fileName, encryptedContent);
-            */
+            // Encrypt and save the note content
+            string encryptedContent = Displayer.EncryptString(content, "SuperSecretKey");
+            File.WriteAllText(fileName, encryptedContent);
 
             Console.WriteLine("Note saved successfully!");
 

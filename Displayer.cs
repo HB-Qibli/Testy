@@ -5,26 +5,35 @@ namespace System
 
         public class Displayer
         {
-                public void WriteLine(string message, int speed = 80, ConsoleColor color = ConsoleColor.White, int encrypted = 0)
+                public void WriteLine(string message, int speed = 80, ConsoleColor color = ConsoleColor.White)
                 {
                         ConsoleColor originalColor = Console.ForegroundColor;
 
                         Console.ForegroundColor = color;
 
-                        for (int i = 0; i < message.Length; i++)
-                        {
-                                Console.Write(message[i]);
-                                System.Threading.Thread.Sleep(speed);
-                        }
-                        Console.ForegroundColor = originalColor;
-                        Console.WriteLine(); //add a new line at the end
+                          string[] lines = text.Split('\n'); // Split text into lines
+
+        foreach (string line in lines)
+        {
+            foreach (char character in line)
+            {
+                Console.Write(character);
+                System.Threading.Thread.Sleep(speed);
+            }
+
+            // Move to the next line
+            Console.WriteLine();
+        }
+
+        Console.ForegroundColor = originalColor;
+        Console.WriteLine();
                 }
-               
+
                    // Display encrypted text (it will automatically decrypt before displaying)
     public static void DisplayEncryptedText(string encryptedText, int speed = 80, string key)
     {
         string decryptedText = DecryptString(encryptedText, key);
-        WriteLine(decryptedText, speed);
+        WriteLine(decryptedText, speed); //maybe later make encrypted text a diff colour
     }
 
   // AES encryption, default is 256 bit 
