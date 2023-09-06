@@ -61,11 +61,7 @@ namespace System
 
                 // Decrypt and display the note content
                 string encryptedContent = File.ReadAllText(fileName);
-<<<<<<< HEAD
-                Displayer.DisplayEncryptedText(encryptedContent, 50, CiphKey);
-=======
                 Displayer.DisplayEncryptedText(encryptedContent, CiphKey, 50);
->>>>>>> 0e63685 (wip-shit jesus christ finally i fix corrupted git)
 
             }
             else
