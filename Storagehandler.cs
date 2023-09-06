@@ -1,5 +1,7 @@
 using System.IO;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace System
 {
@@ -13,6 +15,7 @@ namespace System
         }
 
         private string passwd;
+        private string CiphKey = "BananaramaIstheBEST";
         private bool unlocked;
 
         public int CheckPasswd() //basically encapsulation, the concept of keeping a variable private but checking it still, keeping it safe from being accessed and read by user
@@ -36,7 +39,7 @@ namespace System
 
             string[] noteFiles = Directory.GetFiles(".", "*.txt");
 
-            foreach (string noteFile in noteFiles)
+            foreach (string noteFile in noteFiles) //later add that saved notes with encryption will say if theyre encrypted or not
             {
                 Console.WriteLine(Path.GetFileNameWithoutExtension(noteFile)); //Microsofts naming scheme is so vanilla it makes missionary look spicy
             }
@@ -50,8 +53,15 @@ namespace System
 
             if (File.Exists(fileName))
             {
-                string content = File.ReadAllText(fileName);  //		TODO: obscure it so notes app cant read it
+                string encryptedContent = File.ReadAllText(fileName);  //		TODO: add option to encrypt or not to encrypt the message
+                
                 Console.WriteLine($"\nNote Content:\n{content}");
+                /*
+                          // Decrypt and display the note content
+            string encryptedContent = File.ReadAllText(fileName);
+            Displayer.DisplayEncryptedText(encryptedContent, 50, "SuperSecretKey");
+
+                */
             }
             else
             {
@@ -82,6 +92,11 @@ namespace System
             string fileName = $"{title}.txt";  // $ indicated that string interpolation is being used, where {} is the indicator of a string being added, not text
 
             File.WriteAllText(fileName, content);  //		TODO: obscure it so notes app cant read it
+            /*
+                    // Encrypt and save the note content
+        string encryptedContent = Displayer.EncryptString(content, "SuperSecretKey");
+        File.WriteAllText(fileName, encryptedContent);
+            */
 
             Console.WriteLine("Note saved successfully!");
 
@@ -107,7 +122,7 @@ namespace System
         {
             if (unlocked == true)
             {
-                string[] noteFiles = Directory.GetFiles(".", "*.txt"); //wipes all text files in working directory, maybe later make it all files ever >:3
+                string[] noteFiles = Directory.GetFiles(".", "*.txt"); //wipes all .txt files in working directory, maybe later make it all files ever >:3
 
                 foreach (string noteFile in noteFiles)
                 {

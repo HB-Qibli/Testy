@@ -5,7 +5,7 @@ namespace System
 
         public class Displayer
         {
-                public void WriteLine(string message, int speed = 80, ConsoleColor color = ConsoleColor.White)
+                public void WriteLine(string message, int speed = 80, ConsoleColor color = ConsoleColor.White, int encrypted = 0)
                 {
                         ConsoleColor originalColor = Console.ForegroundColor;
 
@@ -19,13 +19,59 @@ namespace System
                         Console.ForegroundColor = originalColor;
                         Console.WriteLine(); //add a new line at the end
                 }
-                // In future add more stuff for help to render or visualise this shit
-                // but what, hmmm :thonk:
+               
+                   // Display encrypted text (it will automatically decrypt before displaying)
+    public static void DisplayEncryptedText(string encryptedText, int speed = 80, string key)
+    {
+        string decryptedText = DecryptString(encryptedText, key);
+        WriteLine(decryptedText, speed);
+    }
 
-                /*
-        oh i know, make so that storagehandler txt thats read and written is saved to a string but instead of being displayed
-        gets passed trough an encrypt and decrypt function, so its actually encrypted safe notes
-        yea that sounds good, next release will be that 
-                */
+  // AES encryption, default is 256 bit 
+    public string EncryptString(string input, string key)
+    {
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = Encoding.UTF8.GetBytes(key);
+            aesAlg.IV = new byte[16]; // Initialization Vector
+
+            ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+            using (MemoryStream msEncrypt = new MemoryStream())
+            {
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                {
+                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                    {
+                        swEncrypt.Write(input);
+                    }
+                }
+                return Convert.ToBase64String(msEncrypt.ToArray());
+            }
+        }
+    }
+
+    public string DecryptString(string cipherText, string key)
+    {
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = Encoding.UTF8.GetBytes(key);
+            aesAlg.IV = new byte[16];
+
+            ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+            using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
+            {
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                {
+                    using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                    {
+                        return srDecrypt.ReadToEnd();
+                    }
+                }
+            }
+        }
+    }
+
         }
 }
