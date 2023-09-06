@@ -6,7 +6,7 @@ namespace System
 {
     public class Storagehandler
     {
-        private Displayer displayer; //this shit the bomb
+        private Displayer displayer; //this shits the bomb
         public Storagehandler(Displayer displayer, string password = "bananarama") //yeah, defeats the purpouse of encapsulation, but yknow what if someone wants a diff passwd, im too lazy to change dis
         {
             this.displayer = displayer;
