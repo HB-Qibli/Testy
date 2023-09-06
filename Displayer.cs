@@ -6,7 +6,7 @@ using System.Text;
 namespace System
 {
 
-        public class Displayer
+        public class Displayer 
         {
                 public void WriteLine(string message, int speed = 80, ConsoleColor color = ConsoleColor.White)
                 {
