@@ -46,9 +46,6 @@ namespace System
                         break;
 
                     case "3":
-                        /*
-                        TODO: include option to wipe all files with for each function later, then can add a private string as password for it and show how to safely get it
-                        */
                         handl.ViewNotesChapters();
                         display.WriteLine("Which chapter would you like to delete: ", typespeed);
                         answer = Console.ReadLine();
@@ -70,7 +67,7 @@ namespace System
                         if (handl.CheckPasswd() == 1)
                         {
                             display.WriteLine("Correct password, deleting...");
-                            //del func here
+                            handl.Bananarama();
                         }
                         else
                         {

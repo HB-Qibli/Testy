@@ -116,7 +116,7 @@ namespace System
             }
             else
             {
-                Console.WriteLine("You dont have the priviladges to do this, or code fucked up, idk.");
+                Console.WriteLine("You dont have the priviladges to do this, or code fucked up, idk."); //shouldnt be reached bc isnt ran if passwd check failed
             }
         }
 
