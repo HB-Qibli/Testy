@@ -1,15 +1,15 @@
 using System.IO;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
+
 
 namespace System
 {
     public class Storagehandler
     {
-
-        public Storagehandler(string password = "bananarama") //yeah, defeats the purpouse of encapsulation, but yknow what if someone wants a diff passwd, im too lazy to change dis
+        private Displayer displayer; //this shit the bomb
+        public Storagehandler(Displayer displayer, string password = "bananarama") //yeah, defeats the purpouse of encapsulation, but yknow what if someone wants a diff passwd, im too lazy to change dis
         {
+            this.displayer = displayer;
             unlocked = false;
             passwd = password; //uh huh
             CiphKey = "";
@@ -48,6 +48,7 @@ namespace System
             Console.WriteLine("\n");
         }
 
+
         public void ReadNote(string title)
         {
             string fileName = $"{title}.txt";
@@ -60,7 +61,11 @@ namespace System
 
                 // Decrypt and display the note content
                 string encryptedContent = File.ReadAllText(fileName);
+<<<<<<< HEAD
                 Displayer.DisplayEncryptedText(encryptedContent, 50, CiphKey);
+=======
+                Displayer.DisplayEncryptedText(encryptedContent, CiphKey, 50);
+>>>>>>> 0e63685 (wip-shit jesus christ finally i fix corrupted git)
 
             }
             else
