@@ -38,30 +38,6 @@ namespace System
             string decryptedText = DecryptString(encryptedText, key);
             WriteLine(decryptedText, speed); //maybe later make encrypted text a diff colour
         }
-                          string[] lines = text.Split('\n'); // Split text into lines
-
-        foreach (string line in lines)
-        {
-            foreach (char character in line)
-            {
-                Console.Write(character);
-                System.Threading.Thread.Sleep(speed);
-            }
-
-            // Move to the next line
-            Console.WriteLine();
-        }
-
-        Console.ForegroundColor = originalColor;
-        Console.WriteLine();
-                }
-
-                   // Display encrypted text (it will automatically decrypt before displaying)
-    public static void DisplayEncryptedText(string encryptedText, int speed = 80, string key)
-    {
-        string decryptedText = DecryptString(encryptedText, key);
-        WriteLine(decryptedText, speed); //maybe later make encrypted text a diff colour
-    }
 
         // AES encryption, default is 256 bit 
         public static string EncryptString(string input, string key)
