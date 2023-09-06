@@ -24,7 +24,7 @@ public class Displayer
 
         /*
 oh i know, make so that storagehandler txt thats read and written is saved to a string but instead of being displayed
-gets passed trough a anecrypt and decrypt function, so its actually encrypted safe notes
+gets passed trough an encrypt and decrypt function, so its actually encrypted safe notes
 yea that sounds good, next release will be that
         */
 }
