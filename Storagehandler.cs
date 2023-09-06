@@ -61,7 +61,7 @@ namespace System
 
                 // Decrypt and display the note content
                 string encryptedContent = File.ReadAllText(fileName);
-                Displayer.DisplayEncryptedText(encryptedContent, CiphKey, 50);
+                Displayer.DisplayEncryptedText(encryptedContent, CiphKey, 50); //testy testy testy tasty testy
 
             }
             else
