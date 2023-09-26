@@ -13,8 +13,8 @@ namespace System
             int typespeed = 40;
             //honestly unnecesary, making it static would have been just fine as multiple instances wont ever be needed
             // but ig to show teacher that the student is able to do this and understand what it does ig
+            Storagehandler handl = new Storagehandler();
             Displayer display = new Displayer();
-            Storagehandler handl = new Storagehandler(display); //s 16:50 on 6th september in atu class
 
             //do stuff here like welcome to this application and shit, maybe fancy with coloured text too
             display.WriteLine("Welcome to a application for notes, it is amazingly bad!", typespeed, ConsoleColor.Blue);
