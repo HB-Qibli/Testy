@@ -35,7 +35,7 @@ namespace System
 }
 
 /*
-Now that this place is so empty i can write notes and reminders for me to make this release 2.0
+Now that this place is so empty i can write notes and reminders for me to make this release 1.1
 add question whether to or not encrypt the file youre making, and maybe add encrypting a file on its own later.
 for decrypting, the files should have hashes so can confirm whether they have correct passwords or not
 add options for selecting what encyrption type youd like

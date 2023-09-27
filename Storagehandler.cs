@@ -7,7 +7,7 @@ namespace System
     public class Storagehandler
     {
         private Displayer displayer; //this shits the bomb
-        public Storagehandler(Displayer displayer, string password = "bananarama") //yeah, defeats the purpouse of encapsulation, but yknow what if someone wants a diff passwd, im too lazy to change dis
+        public Storagehandler(Displayer displayer, string password = "bananarama") //yeah, dont care
         {
             this.displayer = displayer;
             unlocked = false;
@@ -55,7 +55,7 @@ namespace System
 
             if (File.Exists(fileName))
             {
-                string content = File.ReadAllText(fileName);  //		TODO: add *option* to encrypt or not to encrypt the message
+                string content = File.ReadAllText(fileName);  
 
                 Console.WriteLine($"\nNote Content:\n");
 
@@ -73,7 +73,7 @@ namespace System
             Console.ReadKey();
         }
 
-        public void CreateNote()
+        public void CreateNote() //		TODO: add *option* to encrypt or not to encrypt the message
         {
             Console.Write("Enter note chapter title: ");
             string title = Console.ReadLine();
@@ -89,6 +89,8 @@ namespace System
             }
 
             string content = string.Join(Environment.NewLine, lines);
+            // here the writing notes step ends
+            displayer.WriteLine("Would you like to add encryption?");
 
             string fileName = $"{title}.txt";  // $ indicated that string interpolation is being used, where {} is the indicator of a string being added, not text
 
